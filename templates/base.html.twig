@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <script type="text/javascript">
+            var c_uri = '{{ app.request.pathinfo }}';
+        </script>
+         <script type="text/javascript" src="/js/taches.js"></script> 
+         <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-touch-icon-144x144.png">
+        <link rel="icon" sizes="196x196" href="/favicon/favicon-196.png" type="image/png">
+        <meta name="msapplication-TileImage" content="/favicon/favicon-144.png">
+        <meta name="msapplication-TileColor" content="#FFFFFF"> 
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body style="padding-top: 70px;">
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div class="container" style="position:relative;">
+            <!--
+            <a href="/" class="navbar-brand" style="background:#fff;position: absolute;top: 5px;right: 13px;padding: 10px;margin: 0;">
+                <img src="/images/logo.png" style="width:222px;height:auto;margin-right:20px;"/>
+            </a>
+            -->
+          
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/todo/">À faire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/done/">Terminées</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/all/">Toutes</a>
+                </li>                
+               <li class="nav-item">
+                    <a class="nav-link" href="/add/">Nouvelle</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/access/">Accès</a>
+                </li>
+                
+            </ul>           
+                <span style="position: absolute;right: 20px;color: #fff;">Tâches M.FOUSS</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+            
+             <h2>{% block h2 %}{% endblock %}</h2>
+            {% block body %}{% endblock %}
+    </div>
+        <script src="/js/scripts.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<ul class="ul_tache ull_00">
+		<li class="li_tache_1"><strong>Nom</strong></li>
+		<li class="li_tache_2"><strong>Type</strong></li>
+		<li class="li_tache_3"><strong>Host</strong></li>
+		<li class="li_tache_4"><strong>Login</strong></li>
+        <li class="li_tache_5"><strong>Mdp</strong></li>
+        <li class="li_tache_6"><strong>Url</strong></li>
+        <li class="li_tache_7"><strong></strong></li>
+        <li class="li_tache_8"></li>
+        <li class="li_tache_9"></li>
+	</ul>
+    {% set cpt = 0 %}
+    {% for tache in access %}
+     <ul id="tache_ul_{{ tache.id }}" class="ul_tache ull_{{ cpt%2 }}">
+			<li class="li_tache_1">{{ tache.nom }}</li>
+			<li class="li_tache_2">{{ tache.type }}</li>
+			<li class="li_tache_3">{{ tache.host }}</li>
+			<li class="li_tache_4">{{ tache.login }}</li>
+            <li class="li_tache_5">{{ tache.mdp }}</li>
+            <li class="li_tache_6">{{ tache.url }}</li> 
+             <li class="li_tache_7"></li>          
+            <li class="li_tache_8"><img onclick="delete_tache('{{ tache.id }}');" src="/images/trash.png"/></li>
+            <li class="li_tache_9"><a href="/edit/{{ tache.id }}/"><img src="/images/edit.png"/></a></li>
+		</ul>
+        {% set cpt = cpt + 1 %}
+    {% endfor %}

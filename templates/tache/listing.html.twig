@@ -1,0 +1,51 @@
+<ul class="ul_tache ull_00">
+		<li class="li_tache_1"><strong>Client</strong></li>
+		<li class="li_tache_2"><strong>Titre</strong></li>
+		<li class="li_tache_3"><strong>Dte_Add</strong></li>
+		<li class="li_tache_4"><strong>Tâche</strong></li>
+        <li class="li_tache_5"><strong>Etat</strong></li>
+        <li class="li_tache_6"><strong>Durée</strong></li>
+        <li class="li_tache_7"><strong>Dte_Fin</strong></li>
+        <li class="li_tache_8"></li>
+        <li class="li_tache_9"></li>
+	</ul>
+    {% set cpt = 0 %}
+    {% for tache in taches %}
+     <ul id="tache_ul_{{ tache.id }}" class="ul_tache ull_{{ cpt%2 }}">
+			<li class="li_tache_1">{{ tache.client }}</li>
+			<li class="li_tache_2">{{ tache.title }}</li>
+			<li class="li_tache_3">
+            {% if tache.createdAt %}
+                {{ tache.createdAt | date('d/m/Y H:i') }}
+            {% endif %}
+            </li>
+			<li class="li_tache_4">{{ tache.content }}</li>
+            <li class="li_tache_5">
+            {% if tache.done == "0" %}
+                <span onclick="setdone('{{ tache.id }}', '1');" id="setdone_{{ tache.id }}" class="cusrored setdone">
+                     <img class="img_undone" src="/images/undone.png"/>
+                </span>
+            {% else %}
+                <span onclick="setdone('{{ tache.id }}', '0');" id="setdone_{{ tache.id }}" class="cusrored setdone" style="color:green;">
+                    <img class="img_done" src="/images/done.png"/>
+                </span>
+            {% endif %}
+            
+            </li>
+            <li class="li_tache_6">{{ tache.duree }}</li>
+            <li class="li_tache_7">
+            {% if tache.doneAt %}
+                {{ tache.doneAt | date('d/m/Y H:i') }}
+            {% endif %}
+            </li>
+            <li class="li_tache_8">
+                <img onclick="delete_tache('{{ tache.id }}');" src="/images/trash.png"/>
+            </li>
+            <li class="li_tache_9">
+                <a href="/edit/{{ tache.id }}/">
+                    <img src="/images/edit.png"/>
+                </a>
+            </li>
+		</ul>
+        {% set cpt = cpt + 1 %}
+    {% endfor %}
